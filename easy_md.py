@@ -1,22 +1,3 @@
-# reserved words
-# reserved = {
-#     'Header1': 'HEADER1',
-#     'Header2': 'HEADER2',
-#     'Header3': 'HEADER3',
-#     'Header4': 'HEADER4',
-#     'Header5': 'HEADER5',
-#     'Header6': 'HEADER6',
-#     'Italic': 'ITALIC',
-#     'Bold': 'BOLD',
-#     'Strike': 'STRIKE',
-#     'Bullet': 'BULLET',
-#     'Image': 'IMAGE',
-#     'Link': 'LINK',
-#     'User': 'USER',
-#     'Task': 'TASK'
-
-# }
-
 # Tokens
 tokens = [
     'HEADER1',
@@ -42,26 +23,10 @@ tokens = [
     'NUM',
     'CLEAN_TEXT',
     'TASKCHECK'
-    # 'SPACE'
-]  # + list(reserved.values())
+]
 
 
 # Tokens functions
-# t_TEXT = r'[a-zA-Z0-9 ]+'
-# t_HEADER1 = r'Header1'
-# t_HEADER2 = r'Header2'
-# t_HEADER3 = r'Header3'
-# t_HEADER4 = r'Header4'
-# t_HEADER5 = r'Header5'
-# t_HEADER6 = r'Header6'
-# t_ITALICS = r'Italics'
-# t_BULLET = r'Bullet'
-# t_BOLD = r'Bold'
-# t_STRIKE = r'Strike'
-# t_IMAGE = r'Image'
-# t_LINK = r'Link'
-# t_USER = r'User'
-# t_TASK = r'Task'
 t_RSQUARE_PAREN = r'\]'
 t_LSQUARE_PAREN = r'\['
 t_ignore_SPACE = r'[ ]+'
@@ -158,7 +123,7 @@ def t_NUM(t):
     return t
 
 def t_TEXT(t):
-    r'[ ]+[()a-zA-Z0-9 /!?_^:;=.><+-]+'
+    r'[ ]+[()a-zA-Z0-9 /*~!?_^:;=.><+-]+'
     t.value = t.value.strip()
     return t
 
@@ -173,15 +138,9 @@ def t_newline(t):
     r'\n+'
     t.lexer.lineno += t.value.count("\n")
 
-
-# def t_eof(t):
-#     pass
-
-
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
-
 
 
 # Build the lexer
