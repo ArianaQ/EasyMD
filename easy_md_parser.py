@@ -6,6 +6,7 @@ md_code = ''
 bypass = ''
 previous_act = ''
 
+
 def p_expression(p):
     '''expression : header 
                 | bold 
@@ -137,18 +138,22 @@ def p_emoji(p):
     '''emoji : LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN'''
     p[0] = emoji_to_md(p[3])
 
+
 def p_code(p):
     '''code : LSQUARE_PAREN CODE TEXT RSQUARE_PAREN'''
     p[0] = code_to_md(p[3])
+
 
 def p_num(p):
     '''num : LSQUARE_PAREN NUM TEXT RSQUARE_PAREN'''
     p[0] = num_to_md(p[2], p[3])
     p[0] = p[1]
 
+
 def new_line():
     global md_code
     md_code += '\n'
+
 
 def header1_to_md(text):
     global md_code
@@ -159,6 +164,7 @@ def header1_to_md(text):
     previous_act = 'header'
     return '# ' + text
 
+
 def header2_to_md(text):
     global md_code
     global previous_act
@@ -167,6 +173,7 @@ def header2_to_md(text):
     md_code += '## ' + text
     previous_act = 'header'
     return '## ' + text
+
 
 def header3_to_md(text):
     global md_code
@@ -177,6 +184,7 @@ def header3_to_md(text):
     previous_act = 'header'
     return ' ### ' + text
 
+
 def header4_to_md(text):
     global md_code
     global previous_act
@@ -185,6 +193,7 @@ def header4_to_md(text):
     md_code += '#### ' + text
     previous_act = 'header'
     return ' #### ' + text
+
 
 def header5_to_md(text):
     global md_code
@@ -195,6 +204,7 @@ def header5_to_md(text):
     previous_act = 'header'
     return '##### ' + text
 
+
 def header6_to_md(text):
     global md_code
     global previous_act
@@ -203,6 +213,7 @@ def header6_to_md(text):
     md_code += '###### ' + text + ' '
     previous_act = 'header'
     return ' ###### ' + text + ' '
+
 
 def bold_to_md(text):
     global bypass
@@ -215,6 +226,7 @@ def bold_to_md(text):
     previous_act = 'bold'
     return ' ' + '**' + text + '**' + ' '
 
+
 def italic_to_md(text):
     global bypass
     global md_code
@@ -225,6 +237,7 @@ def italic_to_md(text):
     bypass = '*' + text + '*' + ' '
     previous_act = 'italic'
     return '*' + text + '*' + ' '
+
 
 def strike_to_md(text):
     global bypass
@@ -237,6 +250,7 @@ def strike_to_md(text):
     previous_act = 'strike'
     return '~~' + text + '~~'
 
+
 def user_to_md(text):
     global bypass
     global md_code
@@ -248,16 +262,23 @@ def user_to_md(text):
     previous_act = 'user'
     return '@' + text + ' '
 
+
 def image_to_md(text):
     global bypass
     global md_code
     global previous_act
+
+    temp = text.split('Link')
+    link = temp[1]
+    text = temp[0]
+
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
-    bypass = '![alt text]' + text + ' '
-    md_code += '![alt text]' + text + ' '
+    bypass = '![' + text + ']' + '(' + link + ')' + ' '
+    md_code += '![' + text + ']' + '(' + link + ')' + ' '
     previous_act = 'image'
-    return '![alt text]' + text + ' '
+    return '![' + text + ']' + '(' + link + ')' + ' '
+
 
 def bullet_to_md(text):
     global md_code
@@ -266,10 +287,11 @@ def bullet_to_md(text):
     previous_act = 'list'
     return '* ' + text + ' '
 
+
 def link_to_md(text):
-    text = text.split('Text')
-    link = text[0]
-    text = text[1]
+    temp = text.split('Text')
+    link = temp[0]
+    text = temp[1]
     global bypass
     global md_code
     global previous_act
@@ -280,6 +302,7 @@ def link_to_md(text):
     previous_act = 'link'
     return '[' + text + ']' + '(' + link + ') '
 
+
 def quote_to_md(text):
     global md_code
     global previous_act
@@ -289,14 +312,18 @@ def quote_to_md(text):
     previous_act = 'quote'
     return '>' + text + ' '
 
+
 def emoji_to_md(text):
     global md_code
     global previous_act
+    global bypass
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
-    md_code += ':' + text + ':'
+    bypass = ':' + text + ':'
+    md_code += bypass
     previous_act = 'emoji'
-    return '>' + text + ' '
+    return bypass
+
 
 def code_to_md(text):
     print(text)
@@ -312,6 +339,7 @@ def code_to_md(text):
     previous_act = 'code'
     return "'''" + language + ' ' + text + "'''"
 
+
 def num_to_md(num, text):
     num = str(num.split('Num')[1])
     global md_code
@@ -320,24 +348,27 @@ def num_to_md(num, text):
     previous_act = 'list'
     return num + '.' + text
 
+
 def p_error(p):
     print("Syntax error at '%s'" % p.value)
+
 
 def ask_for_path():
     checkagain = True
     while checkagain:
         path = input("TYPE FILE TO CONVERT TO MD: ")
 
-        if (path.lower()=="exit"):
-            print('\nThanks for using EasyMD! Bye!');
+        if (path.lower() == "exit"):
+            print('\nThanks for using EasyMD! Bye!')
             exit()
-        elif ((os.path.exists(path))==False):
+        elif ((os.path.exists(path)) == False):
             print("\nFILE DOESN'T EXIST, TRY AGAIN! | TO EXIT, TYPE EXIT\n")
         elif (path.lower().endswith('.txt') == False):
             print("\nFILE IS NOT .TXT, TRY AGAIN! | TO EXIT, TYPE EXIT\n")
         else:
-            checkagain=False
+            checkagain = False
             return path
+
 
 def show_in_terminal(pa):
     with open(path) as f:
@@ -349,40 +380,43 @@ def show_in_terminal(pa):
     print('============================')
     print(md_code)
 
+
 def save_and_show(pa):
     with open(path) as f:
         for line in f:
             result = parser.parse(line)
 
-    newfile = open("converted.md","w") 
-    newfile.write(md_code) 
-    newfile.close() 
+    newfile = open("converted.md", "w")
+    newfile.write(md_code)
+    newfile.close()
 
     print('\n============================')
     print('MD CODE TRANSLATION PREVIEW:')
     print('============================')
-    print(md_code)    
+    print(md_code)
+
 
 def just_save(pa):
     with open(path) as f:
         for line in f:
             result = parser.parse(line)
 
-    newfile = open("converted.md","w") 
-    newfile.write(md_code) 
-    newfile.close() 
+    newfile = open("converted.md", "w")
+    newfile.write(md_code)
+    newfile.close()
 
-#BUILD PARSER
+
+# BUILD PARSER
 parser = yacc.yacc()
 
-#USER INTERFACE
+# USER INTERFACE
 print('\n==================')
 print('WELCOME TO EASYMD!')
 print('==================')
 print('AS A USER, YOU CAN CONVERT A FILE WITH EASYMD')
 print('SYNTAX TO MD CODE AND/OR TO AN MD FILE!')
 
-check = True;
+check = True
 while (check):
     print('\nWHAT DO YOU WANT TO DO?')
     print('1 - Show translation in terminal.')
@@ -391,21 +425,20 @@ while (check):
     print('4 - Exit.\n')
 
     action = input()
-    if (action=="1"):
+    if (action == "1"):
         path = ask_for_path()
         show_in_terminal(path)
-        check = False;
-    elif (action=="2"):
+        check = False
+    elif (action == "2"):
         path = ask_for_path()
         just_save(path)
-        check = False;
-    elif (action=="3"):
+        check = False
+    elif (action == "3"):
         path = ask_for_path()
         save_and_show(path)
-        check = False;
-    elif (action=="4"):
-        print('Thanks for using EasyMD! Bye!');
+        check = False
+    elif (action == "4"):
+        print('Thanks for using EasyMD! Bye!')
         exit()
     else:
         print("INVALID! | TRY AGAIN!\n")
-
