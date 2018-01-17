@@ -326,18 +326,14 @@ def emoji_to_md(text):
 
 
 def code_to_md(text):
-    print(text)
-    temp = text.split('Language')
-    text = temp[0]
-    language = temp[1].strip()
-    print(language)
+    global bypass
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
-        md_code += '\n'
-    md_code += "'''" + language + ' ' + text + "'''"
+    md_code += "```"+ text + "```" + ' '
+    bypass = "```" + text + "```" + ' '
     previous_act = 'code'
-    return "'''" + language + ' ' + text + "'''"
+    return "```" + text + "```" + ' '
+
 
 
 def num_to_md(num, text):
