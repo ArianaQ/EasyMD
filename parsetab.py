@@ -6,9 +6,15 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
+<<<<<<< HEAD
 _lr_signature = 'BOLD BULLET CLEAN_TEXT CODE EMOJI HEADER1 HEADER2 HEADER3 HEADER4 HEADER5 HEADER6 IMAGE ITALIC LINK LSQUARE_PAREN NUM QUOTE RSQUARE_PAREN STRIKE TASK TASKCHECK TEXT USERexpression : header \n                | bold \n                | italic\n                | strike\n                | user\n                | image\n                | bullet\n                | link\n                | quote\n                | emoji\n                | code\n                | num\n                | task\n                | taskcheck\n                | clean_textheader : LSQUARE_PAREN HEADER1  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER2  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER3  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER4  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER5  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER6  TEXT RSQUARE_PAREN\n    clean_text : CLEAN_TEXT\n                    | CLEAN_TEXT compound \n                    | CLEAN_TEXT compound TEXT\n                    | clean_text\n                    compound : bold \n                | italic\n                | strike\n                | user\n                | image\n                | link\n                | emoji\n                | bold clean_text\n                | italic clean_text\n                | strike clean_text\n                | user clean_text\n                | image clean_text\n                | link clean_text\n                | emoji clean_textbold : LSQUARE_PAREN BOLD TEXT RSQUARE_PARENitalic : LSQUARE_PAREN ITALIC TEXT RSQUARE_PARENstrike : LSQUARE_PAREN STRIKE TEXT RSQUARE_PARENuser : LSQUARE_PAREN USER TEXT RSQUARE_PAREN image : LSQUARE_PAREN IMAGE TEXT RSQUARE_PARENbullet : LSQUARE_PAREN BULLET TEXT RSQUARE_PARENlink : LSQUARE_PAREN LINK TEXT  RSQUARE_PARENquote : LSQUARE_PAREN QUOTE TEXT RSQUARE_PARENemoji : LSQUARE_PAREN EMOJI TEXT RSQUARE_PARENcode : LSQUARE_PAREN CODE TEXT RSQUARE_PARENnum : LSQUARE_PAREN NUM TEXT RSQUARE_PARENtask : LSQUARE_PAREN TASK TEXT RSQUARE_PARENtaskcheck : LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN'
     
 _lr_action_items = {'LSQUARE_PAREN':([0,18,],[17,46,]),'CLEAN_TEXT':([0,39,40,41,42,43,44,45,80,81,82,83,84,86,88,],[18,18,18,18,18,18,18,18,-40,-41,-42,-43,-44,-46,-48,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,38,39,40,41,42,43,44,45,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,],[0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15,-22,-23,-26,-27,-28,-29,-30,-31,-32,-24,-25,-25,-25,-25,-25,-25,-25,-16,-17,-18,-19,-20,-21,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-50,-51,-52,]),'HEADER1':([17,],[19,]),'HEADER2':([17,],[20,]),'HEADER3':([17,],[21,]),'HEADER4':([17,],[22,]),'HEADER5':([17,],[23,]),'HEADER6':([17,],[24,]),'BOLD':([17,46,],[25,25,]),'ITALIC':([17,46,],[26,26,]),'STRIKE':([17,46,],[27,27,]),'USER':([17,46,],[28,28,]),'IMAGE':([17,46,],[29,29,]),'BULLET':([17,],[30,]),'LINK':([17,46,],[31,31,]),'QUOTE':([17,],[32,]),'EMOJI':([17,46,],[33,33,]),'CODE':([17,],[34,]),'NUM':([17,],[35,]),'TASK':([17,],[36,]),'TASKCHECK':([17,],[37,]),'TEXT':([18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,66,67,68,69,70,71,72,73,80,81,82,83,84,86,88,],[-22,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,-26,-27,-28,-29,-30,-31,-32,-24,-25,-25,-25,-25,-25,-25,-25,-40,-41,-42,-43,-44,-46,-48,]),'RSQUARE_PAREN':([47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,],[74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,]),}
+=======
+_lr_signature = 'BOLD BULLET CLEAN_TEXT CODE EMOJI HEADER1 HEADER2 HEADER3 HEADER4 HEADER5 HEADER6 IMAGE ITALIC LINK LSQUARE_PAREN NUM QUOTE RSQUARE_PAREN STRIKE TASK TEXT USERexpression : header \n                | bold \n                | italic\n                | strike\n                | user\n                | image\n                | bullet\n                | link\n                | quote\n                | emoji\n                | code\n                | num\n                | clean_textheader : LSQUARE_PAREN HEADER1  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER2  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER3  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER4  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER5  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER6  TEXT RSQUARE_PAREN\n    clean_text : CLEAN_TEXT\n                    | CLEAN_TEXT compound \n                    | CLEAN_TEXT compound TEXT\n                    compound : bold \n                | italic\n                | strike\n                | user\n                | image\n                | link\n                | emoji\n                | bold clean_text\n                | italic clean_text\n                | strike clean_text\n                | user clean_text\n                | image clean_text\n                | link clean_text\n                | emoji clean_textbold : LSQUARE_PAREN BOLD TEXT RSQUARE_PARENitalic : LSQUARE_PAREN ITALIC TEXT RSQUARE_PARENstrike : LSQUARE_PAREN STRIKE TEXT RSQUARE_PARENuser : LSQUARE_PAREN USER TEXT RSQUARE_PAREN image : LSQUARE_PAREN IMAGE TEXT RSQUARE_PARENbullet : LSQUARE_PAREN BULLET TEXT RSQUARE_PARENlink : LSQUARE_PAREN LINK TEXT  RSQUARE_PARENquote : LSQUARE_PAREN QUOTE TEXT RSQUARE_PARENemoji : LSQUARE_PAREN EMOJI TEXT RSQUARE_PARENcode : LSQUARE_PAREN CODE TEXT RSQUARE_PARENnum : LSQUARE_PAREN NUM TEXT RSQUARE_PAREN'
+    
+_lr_action_items = {'HEADER3':([8,],[17,]),'NUM':([8,],[25,]),'LINK':([8,34,],[18,18,]),'HEADER6':([8,],[19,]),'ITALIC':([8,34,],[33,33,]),'HEADER1':([8,],[21,]),'EMOJI':([8,34,],[24,24,]),'BULLET':([8,],[30,]),'RSQUARE_PAREN':([43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,],[68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,]),'QUOTE':([8,],[28,]),'IMAGE':([8,34,],[32,32,]),'CODE':([8,],[23,]),'LSQUARE_PAREN':([0,15,],[8,34,]),'HEADER2':([8,],[20,]),'TEXT':([15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,35,36,37,38,39,40,41,42,60,61,62,63,64,65,66,67,69,73,75,77,80,83,84,],[-20,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,-28,-24,-26,-29,-27,-25,-23,67,-35,-31,-33,-36,-34,-32,-30,-22,-43,-37,-45,-39,-40,-41,-38,]),'BOLD':([8,34,],[22,22,]),'STRIKE':([8,34,],[26,26,]),'HEADER5':([8,],[27,]),'CLEAN_TEXT':([0,35,36,37,38,39,40,41,69,73,75,77,80,83,84,],[15,15,15,15,15,15,15,15,-43,-37,-45,-39,-40,-41,-38,]),'USER':([8,34,],[29,29,]),'HEADER4':([8,],[31,]),'$end':([1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,35,36,37,38,39,40,41,42,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,],[-9,-2,-1,-7,-6,-11,-12,-8,-3,-5,-10,0,-4,-20,-13,-28,-24,-26,-29,-27,-25,-23,-21,-35,-31,-33,-36,-34,-32,-30,-22,-16,-43,-19,-15,-14,-37,-46,-45,-47,-39,-18,-44,-40,-42,-17,-41,-38,]),}
+>>>>>>> 5c2c23c055f6cc9933aa06a616709b84ec45d312
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +23,11 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
+<<<<<<< HEAD
 _lr_goto_items = {'expression':([0,],[1,]),'header':([0,],[2,]),'bold':([0,18,],[3,39,]),'italic':([0,18,],[4,40,]),'strike':([0,18,],[5,41,]),'user':([0,18,],[6,42,]),'image':([0,18,],[7,43,]),'bullet':([0,],[8,]),'link':([0,18,],[9,44,]),'quote':([0,],[10,]),'emoji':([0,18,],[11,45,]),'code':([0,],[12,]),'num':([0,],[13,]),'task':([0,],[14,]),'taskcheck':([0,],[15,]),'clean_text':([0,39,40,41,42,43,44,45,],[16,67,68,69,70,71,72,73,]),'compound':([18,],[38,]),}
+=======
+_lr_goto_items = {'quote':([0,],[1,]),'italic':([0,15,],[10,36,]),'code':([0,],[6,]),'user':([0,15,],[11,37,]),'header':([0,],[3,]),'link':([0,15,],[9,35,]),'emoji':([0,15,],[12,38,]),'image':([0,15,],[5,39,]),'expression':([0,],[13,]),'strike':([0,15,],[14,40,]),'bold':([0,15,],[2,41,]),'num':([0,],[7,]),'compound':([15,],[42,]),'clean_text':([0,35,36,37,38,39,40,41,],[16,60,61,62,63,64,65,66,]),'bullet':([0,],[4,]),}
+>>>>>>> 5c2c23c055f6cc9933aa06a616709b84ec45d312
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -39,6 +49,7 @@ _lr_productions = [
   ('expression -> emoji','expression',1,'p_expression','easy_md_parser.py',20),
   ('expression -> code','expression',1,'p_expression','easy_md_parser.py',21),
   ('expression -> num','expression',1,'p_expression','easy_md_parser.py',22),
+<<<<<<< HEAD
   ('expression -> task','expression',1,'p_expression','easy_md_parser.py',23),
   ('expression -> taskcheck','expression',1,'p_expression','easy_md_parser.py',24),
   ('expression -> clean_text','expression',1,'p_expression','easy_md_parser.py',25),
@@ -79,4 +90,41 @@ _lr_productions = [
   ('num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN','num',4,'p_num','easy_md_parser.py',150),
   ('task -> LSQUARE_PAREN TASK TEXT RSQUARE_PAREN','task',4,'p_task','easy_md_parser.py',155),
   ('taskcheck -> LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN','taskcheck',4,'p_taskcheck','easy_md_parser.py',159),
+=======
+  ('expression -> clean_text','expression',1,'p_expression','easy_md_parser.py',23),
+  ('header -> LSQUARE_PAREN HEADER1 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',29),
+  ('header -> LSQUARE_PAREN HEADER2 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',30),
+  ('header -> LSQUARE_PAREN HEADER3 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',31),
+  ('header -> LSQUARE_PAREN HEADER4 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',32),
+  ('header -> LSQUARE_PAREN HEADER5 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',33),
+  ('header -> LSQUARE_PAREN HEADER6 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',34),
+  ('clean_text -> CLEAN_TEXT','clean_text',1,'p_clean_text','easy_md_parser.py',51),
+  ('clean_text -> CLEAN_TEXT compound','clean_text',2,'p_clean_text','easy_md_parser.py',52),
+  ('clean_text -> CLEAN_TEXT compound TEXT','clean_text',3,'p_clean_text','easy_md_parser.py',53),
+  ('compound -> bold','compound',1,'p_compund','easy_md_parser.py',81),
+  ('compound -> italic','compound',1,'p_compund','easy_md_parser.py',82),
+  ('compound -> strike','compound',1,'p_compund','easy_md_parser.py',83),
+  ('compound -> user','compound',1,'p_compund','easy_md_parser.py',84),
+  ('compound -> image','compound',1,'p_compund','easy_md_parser.py',85),
+  ('compound -> link','compound',1,'p_compund','easy_md_parser.py',86),
+  ('compound -> emoji','compound',1,'p_compund','easy_md_parser.py',87),
+  ('compound -> bold clean_text','compound',2,'p_compund','easy_md_parser.py',88),
+  ('compound -> italic clean_text','compound',2,'p_compund','easy_md_parser.py',89),
+  ('compound -> strike clean_text','compound',2,'p_compund','easy_md_parser.py',90),
+  ('compound -> user clean_text','compound',2,'p_compund','easy_md_parser.py',91),
+  ('compound -> image clean_text','compound',2,'p_compund','easy_md_parser.py',92),
+  ('compound -> link clean_text','compound',2,'p_compund','easy_md_parser.py',93),
+  ('compound -> emoji clean_text','compound',2,'p_compund','easy_md_parser.py',94),
+  ('bold -> LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN','bold',4,'p_bold','easy_md_parser.py',98),
+  ('italic -> LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN','italic',4,'p_italic','easy_md_parser.py',103),
+  ('strike -> LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN','strike',4,'p_strike','easy_md_parser.py',108),
+  ('user -> LSQUARE_PAREN USER TEXT RSQUARE_PAREN','user',4,'p_user','easy_md_parser.py',113),
+  ('image -> LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN','image',4,'p_image','easy_md_parser.py',118),
+  ('bullet -> LSQUARE_PAREN BULLET TEXT RSQUARE_PAREN','bullet',4,'p_bullet','easy_md_parser.py',123),
+  ('link -> LSQUARE_PAREN LINK TEXT RSQUARE_PAREN','link',4,'p_link','easy_md_parser.py',128),
+  ('quote -> LSQUARE_PAREN QUOTE TEXT RSQUARE_PAREN','quote',4,'p_quote','easy_md_parser.py',133),
+  ('emoji -> LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN','emoji',4,'p_emoji','easy_md_parser.py',138),
+  ('code -> LSQUARE_PAREN CODE TEXT RSQUARE_PAREN','code',4,'p_code','easy_md_parser.py',143),
+  ('num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN','num',4,'p_num','easy_md_parser.py',148),
+>>>>>>> 5c2c23c055f6cc9933aa06a616709b84ec45d312
 ]

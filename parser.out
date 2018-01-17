@@ -27,6 +27,7 @@ Rule 21    header -> LSQUARE_PAREN HEADER6 TEXT RSQUARE_PAREN
 Rule 22    clean_text -> CLEAN_TEXT
 Rule 23    clean_text -> CLEAN_TEXT compound
 Rule 24    clean_text -> CLEAN_TEXT compound TEXT
+<<<<<<< HEAD
 Rule 25    clean_text -> clean_text
 Rule 26    compound -> bold
 Rule 27    compound -> italic
@@ -63,12 +64,50 @@ BULLET               : 45
 CLEAN_TEXT           : 22 23 24
 CODE                 : 49
 EMOJI                : 48
+=======
+Rule 25    compound -> bold
+Rule 26    compound -> italic
+Rule 27    compound -> strike
+Rule 28    compound -> user
+Rule 29    compound -> image
+Rule 30    compound -> link
+Rule 31    compound -> emoji
+Rule 32    compound -> bold clean_text
+Rule 33    compound -> italic clean_text
+Rule 34    compound -> strike clean_text
+Rule 35    compound -> user clean_text
+Rule 36    compound -> image clean_text
+Rule 37    compound -> link clean_text
+Rule 38    compound -> emoji clean_text
+Rule 39    bold -> LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN
+Rule 40    italic -> LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN
+Rule 41    strike -> LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN
+Rule 42    user -> LSQUARE_PAREN USER TEXT RSQUARE_PAREN
+Rule 43    image -> LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN
+Rule 44    bullet -> LSQUARE_PAREN BULLET TEXT RSQUARE_PAREN
+Rule 45    link -> LSQUARE_PAREN LINK TEXT RSQUARE_PAREN
+Rule 46    quote -> LSQUARE_PAREN QUOTE TEXT RSQUARE_PAREN
+Rule 47    emoji -> LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN
+Rule 48    code -> LSQUARE_PAREN CODE TEXT RSQUARE_PAREN
+Rule 49    num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN
+Rule 50    task -> LSQUARE_PAREN TASK TEXT RSQUARE_PAREN
+Rule 51    taskcheck -> LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN
+
+Terminals, with rules where they appear
+
+BOLD                 : 39
+BULLET               : 44
+CLEAN_TEXT           : 22 23 24
+CODE                 : 48
+EMOJI                : 47
+>>>>>>> 5c2c23c055f6cc9933aa06a616709b84ec45d312
 HEADER1              : 16
 HEADER2              : 17
 HEADER3              : 18
 HEADER4              : 19
 HEADER5              : 20
 HEADER6              : 21
+<<<<<<< HEAD
 IMAGE                : 44
 ITALIC               : 41
 LINK                 : 46
@@ -81,10 +120,24 @@ TASK                 : 51
 TASKCHECK            : 52
 TEXT                 : 16 17 18 19 20 21 24 40 41 42 43 44 45 46 47 48 49 50 51 52
 USER                 : 43
+=======
+IMAGE                : 43
+ITALIC               : 40
+LINK                 : 45
+LSQUARE_PAREN        : 16 17 18 19 20 21 39 40 41 42 43 44 45 46 47 48 49 50 51
+NUM                  : 49
+QUOTE                : 46
+RSQUARE_PAREN        : 16 17 18 19 20 21 39 40 41 42 43 44 45 46 47 48 49 50 51
+STRIKE               : 41
+TASK                 : 50
+TEXT                 : 16 17 18 19 20 21 24 39 40 41 42 43 44 45 46 47 48 49 50 51
+USER                 : 42
+>>>>>>> 5c2c23c055f6cc9933aa06a616709b84ec45d312
 error                : 
 
 Nonterminals, with rules where they appear
 
+<<<<<<< HEAD
 bold                 : 2 26 33
 bullet               : 7
 clean_text           : 15 25 33 34 35 36 37 38 39
@@ -1046,3 +1099,24 @@ WARNING: Rule (compound -> user clean_text) is never reduced
 WARNING: Rule (compound -> image clean_text) is never reduced
 WARNING: Rule (compound -> link clean_text) is never reduced
 WARNING: Rule (compound -> emoji clean_text) is never reduced
+=======
+TASKCHECK            : 51
+bold                 : 2 25 32
+bullet               : 7
+clean_text           : 15 32 33 34 35 36 37 38
+code                 : 11
+compound             : 23 24
+emoji                : 10 31 38
+expression           : 0
+header               : 1
+image                : 6 29 36
+italic               : 3 26 33
+link                 : 8 30 37
+num                  : 12
+quote                : 9
+strike               : 4 27 34
+task                 : 13
+taskcheck            : 14
+user                 : 5 28 35
+
+>>>>>>> 5c2c23c055f6cc9933aa06a616709b84ec45d312

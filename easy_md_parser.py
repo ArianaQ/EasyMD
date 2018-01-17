@@ -5,6 +5,7 @@ import os.path
 md_code = ''
 bypass = ''
 previous_act = ''
+c_text = False  # replace to bypass
 
 
 def p_expression(p):
@@ -51,13 +52,14 @@ def p_header(p):
 
 def p_clean_text(p):
     '''clean_text : CLEAN_TEXT
-                    | CLEAN_TEXT compound 
-                    | CLEAN_TEXT compound TEXT
-                    | clean_text
+                    | CLEAN_TEXT compound
                     '''
 
     global md_code
     global previous_act
+    global c_text
+    c_text = True
+    global bypass
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
     md_code += p[1] + ' ' + bypass
@@ -77,6 +79,8 @@ def p_clean_text(p):
         p[0] = p[1] + bypass + p[3]
     else:
         p[0] = p[1] + bypass
+    bypass = ''
+    c_text = False
 
 
 def p_compund(p):
@@ -86,14 +90,7 @@ def p_compund(p):
                 | user
                 | image
                 | link
-                | emoji
-                | bold clean_text
-                | italic clean_text
-                | strike clean_text
-                | user clean_text
-                | image clean_text
-                | link clean_text
-                | emoji clean_text'''
+                | emoji'''
 
 
 def p_bold(p):
@@ -151,13 +148,16 @@ def p_num(p):
     p[0] = num_to_md(p[2], p[3])
     p[0] = p[1]
 
+
 def p_task(p):
     '''task : LSQUARE_PAREN TASK TEXT RSQUARE_PAREN'''
     p[0] = task_to_md(p[3])
 
+
 def p_taskcheck(p):
     '''taskcheck : LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN'''
     p[0] = taskcheck_to_md(p[3])
+
 
 def new_line():
     global md_code
@@ -230,7 +230,8 @@ def bold_to_md(text):
     global previous_act
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
-    md_code += '**' + text + '**' + ' '
+    if not c_text:
+        md_code += '**' + text + '**' + ' '
     bypass = '**' + text + '**' + ' '
     previous_act = 'bold'
     return ' ' + '**' + text + '**' + ' '
@@ -242,7 +243,8 @@ def italic_to_md(text):
     global previous_act
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
-    md_code += '*' + text + '*' + ' '
+    if not c_text:
+        md_code += '*' + text + '*' + ' '
     bypass = '*' + text + '*' + ' '
     previous_act = 'italic'
     return '*' + text + '*' + ' '
@@ -254,7 +256,8 @@ def strike_to_md(text):
     global previous_act
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
-    md_code += ' ' + '~~' + text + '~~' + ' '
+    if not c_text:
+        md_code += ' ' + '~~' + text + '~~' + ' '
     bypass = ' ' + '~~' + text + '~~' + ' '
     previous_act = 'strike'
     return '~~' + text + '~~'
@@ -267,7 +270,7 @@ def user_to_md(text):
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
     md_code += '@' + text + ' '
-    bypass = '@' + text + ' '
+    # bypass = '@' + text + ' '
     previous_act = 'user'
     return '@' + text + ' '
 
@@ -283,7 +286,6 @@ def image_to_md(text):
 
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
-    bypass = '![' + text + ']' + '(' + link + ')' + ' '
     md_code += '![' + text + ']' + '(' + link + ')' + ' '
     previous_act = 'image'
     return '![' + text + ']' + '(' + link + ')' + ' '
@@ -306,8 +308,8 @@ def link_to_md(text):
     global previous_act
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
-    bypass = '[' + text + ']' + '(' + link + ') '
-    md_code += '[' + text + ']' + '(' + link + ') '
+    if not c_text:
+        md_code += '[' + text + ']' + '(' + link + ') '
     previous_act = 'link'
     return '[' + text + ']' + '(' + link + ') '
 
@@ -328,7 +330,7 @@ def emoji_to_md(text):
     global bypass
     if previous_act == 'list' or previous_act == 'quote':
         md_code += '\n'
-    bypass = ':' + text + ':'
+    bypass = ':' + text + ':' + ' '
     md_code += bypass
     previous_act = 'emoji'
     return bypass
@@ -338,28 +340,28 @@ def code_to_md(text):
     global bypass
     global md_code
     global previous_act
-    md_code += "```"+ text + "```" + ' '
-    bypass = "```" + text + "```" + ' '
+    md_code += "```" + text + "```" + ' '
     previous_act = 'code'
     return "```" + text + "```" + ' '
+
 
 def task_to_md(text):
     global bypass
     global md_code
     global previous_act
-    md_code += "- [ ] "+ text + ' '
-    bypass = "- [ ] " + text + ' '
+    md_code += "- [ ] " + text + ' '
     previous_act = 'task'
     return "- [ ] " + text + ' '
+
 
 def taskcheck_to_md(text):
     global bypass
     global md_code
     global previous_act
-    md_code += "- [x] "+ text + ' '
-    bypass = "- [x] " + text + ' '
+    md_code += "- [x] " + text + ' '
     previous_act = 'taskcheck'
     return "- [x]" + text + ' '
+
 
 def num_to_md(num, text):
     num = str(num.split('Num')[1])
