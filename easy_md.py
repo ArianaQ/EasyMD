@@ -14,6 +14,7 @@
 #     'Link': 'LINK',
 #     'User': 'USER',
 #     'Task': 'TASK'
+
 # }
 
 # Tokens
@@ -39,7 +40,8 @@ tokens = [
     'EMOJI',
     'CODE',
     'NUM',
-    'CLEAN_TEXT'
+    'CLEAN_TEXT',
+    'TASKCHECK'
     # 'SPACE'
 ]  # + list(reserved.values())
 
@@ -129,11 +131,13 @@ def t_USER(t):
     r'User'
     return t
 
+def t_TASKCHECK(t):
+    r'TaskCheck'
+    return t
 
 def t_TASK(t):
     r'Task'
     return t
-
 
 def t_QUOTE(t):
     r'Quote'
@@ -149,11 +153,9 @@ def t_CODE(t):
     r'Code'
     return t
 
-
 def t_NUM(t):
     r'Num.'
     return t
-
 
 def t_TEXT(t):
     r'[ ]+[()a-zA-Z0-9 /!?_^:;=.><+-]+'
