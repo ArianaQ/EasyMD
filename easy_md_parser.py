@@ -51,7 +51,6 @@ def p_clean_text(p):
     '''clean_text : CLEAN_TEXT
                     | CLEAN_TEXT compound 
                     | CLEAN_TEXT compound TEXT
-                    | clean_text
                     '''
 
     global md_code
@@ -329,11 +328,10 @@ def code_to_md(text):
     global bypass
     global md_code
     global previous_act
-    md_code += "```"+ text + "```" + ' '
+    md_code += "```" + text + "```" + ' '
     bypass = "```" + text + "```" + ' '
     previous_act = 'code'
     return "```" + text + "```" + ' '
-
 
 
 def num_to_md(num, text):
