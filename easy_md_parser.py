@@ -20,6 +20,8 @@ def p_expression(p):
                 | emoji
                 | code
                 | num
+                | task
+                | taskcheck
                 | clean_text'''
     new_line()
     p[0] = p[1]
@@ -149,6 +151,13 @@ def p_num(p):
     p[0] = num_to_md(p[2], p[3])
     p[0] = p[1]
 
+def p_task(p):
+    '''task : LSQUARE_PAREN TASK TEXT RSQUARE_PAREN'''
+    p[0] = task_to_md(p[3])
+
+def p_taskcheck(p):
+    '''taskcheck : LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN'''
+    p[0] = taskcheck_to_md(p[3])
 
 def new_line():
     global md_code
@@ -334,7 +343,23 @@ def code_to_md(text):
     previous_act = 'code'
     return "```" + text + "```" + ' '
 
+def task_to_md(text):
+    global bypass
+    global md_code
+    global previous_act
+    md_code += "- [ ] "+ text + ' '
+    bypass = "- [ ] " + text + ' '
+    previous_act = 'task'
+    return "- [ ] " + text + ' '
 
+def taskcheck_to_md(text):
+    global bypass
+    global md_code
+    global previous_act
+    md_code += "- [x] "+ text + ' '
+    bypass = "- [x] " + text + ' '
+    previous_act = 'taskcheck'
+    return "- [x] " + text + ' '
 
 def num_to_md(num, text):
     num = str(num.split('Num')[1])
