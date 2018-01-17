@@ -359,7 +359,7 @@ def taskcheck_to_md(text):
     md_code += "- [x] "+ text + ' '
     bypass = "- [x] " + text + ' '
     previous_act = 'taskcheck'
-    return "- [x] " + text + ' '
+    return "- [x]" + text + ' '
 
 def num_to_md(num, text):
     num = str(num.split('Num')[1])

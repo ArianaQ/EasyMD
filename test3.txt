@@ -1,5 +1,5 @@
 hola [Emoji camel]
-[Header1 This is the project for PL]
+[Header1 This is (the) project for PL]
 We created an intrepeted language to make the use of MD
 easiest.
 [Header2 Testing ordered and unordered list]
@@ -15,3 +15,7 @@ and [Strike strike]
 [Emoji camel]
 [User wilx94]
 [Code if (condition) do this;]
+[Task Task 1]
+[Task Task 2]
+[TaskCheck Task 1]
+[TaskCheck Task 2]
