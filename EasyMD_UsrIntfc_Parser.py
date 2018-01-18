@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from easy_md import tokens
+from EasyMD_Lexer import tokens
 import os.path
 
 md_code = ''
