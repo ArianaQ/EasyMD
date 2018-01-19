@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ArianaQ/EasyMD/master/EasyMDLogo2.png" alt="EasyMD"/>
+  <img src="https://raw.githubusercontent.com/ArianaQ/EasyMD/master/EasyMDLogo.png" alt="EasyMD"/>
 </p>
 
 ## EasyMD EXPLAINED (VIDEO)
