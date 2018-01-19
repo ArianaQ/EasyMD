@@ -1,9 +1,6 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ArianaQ/EasyMD/master/EasyMDLogo2.png" alt="EasyMD"/>
-</p>
-```
-By: Ariana Q & Wilson V
-```
+  <img src="https://raw.githubusercontent.com/ArianaQ/EasyMD/master/EasyMDLogo2.png" alt="EasyMD"/><br>
+<code>By: Ariana Q & Wilson V</code></p>
 
 ## EasyMD EXPLAINED (VIDEO)
 
