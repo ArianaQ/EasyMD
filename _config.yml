@@ -1,1 +1,4 @@
 theme: jekyll-theme-modernist
+title: [EasyMD]
+description: [A language to simplify MarkDown.]
+show_downloads: ["true"]
