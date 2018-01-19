@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/ArianaQ/EasyMD/master/EasyMDLogo2.png" alt="EasyMD"/><br>
-  <font face = "Courier New" color="DIMGRAY">By: Ariana Q & Wilson V<br><bold>ICOM 4036</bold></font></p><br>
+  <font face = "Courier New" color="DIMGRAY">By: Ariana Q & Wilson V<br><b>ICOM 4036</b></font></p><br>
  
 
 ## EasyMD EXPLAINED (VIDEO)
