@@ -1,4 +1,3 @@
-# EasyMD
 
 ## EasyMD EXPLAINED (VIDEO)
 
