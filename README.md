@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ArianaQ/EasyMD/master/EasyMDLogo.png" alt="EasyMD"/>
+</p>
 
 ## EasyMD EXPLAINED (VIDEO)
 
