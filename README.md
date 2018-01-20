@@ -5,7 +5,7 @@
 ## **EASYMD VIDEO**
 [![WATCH THE VIDEO!](https://raw.githubusercontent.com/ArianaQ/EasyMD/master/VideoImage.png)](https://www.youtube.com/watch?v=6HB0KqA5zfQ)
 
-## OVERVIEW
+## **OVERVIEW**
 EasyMD is a simplified language for MarkDown use.
 
 #### MOTIVATION
