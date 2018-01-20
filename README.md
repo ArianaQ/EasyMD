@@ -27,5 +27,5 @@ MarkDown language is a lightweight markup language with plain text formatting sy
 This markup language is rapidly becoming the writing standard for writers, scientists, academics, among others. Nearly every popular content management solution supports Markdown and if it’s not already being supported, MarkDown can be added with an easy extension installation. Popular websites like GitHub, StackOverflow and Reddit use it as well. Particularly in GitHub, it is mostly used in Gists which is a feature for code snippet, in Issues and Pull Requests comments and in files with .md or .markdown extensions.
 
 ## **LINK TO CODE AND DOCUMENTATION**
-* GITHUB: https://github.com/ArianaQ/EasyMD
-* DOWNLOAD AS ZIP: https://github.com/ArianaQ/EasyMD/zipball/master
+* **GITHUB:** https://github.com/ArianaQ/EasyMD
+* **DOWNLOAD AS ZIP:** https://github.com/ArianaQ/EasyMD/zipball/master
