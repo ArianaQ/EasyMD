@@ -20,7 +20,7 @@ This programing language has the motivation of facilitating the use of MarkDown 
 #### APPROACH
 EasyMD will take a .txt file written in EasyMD syntax and will then interpret it and translate it to MarkDown, producing the output MD code. This MD code can be saved to an .md file and/or be shown in the terminal. The development was produced with Python3 programming language. The parsing tool that was used is PLY, which is basically an implementation of some Python modules such as lex and yacc. The module lex is in charge of lexical analysis and yacc is in charge of creating the parser. EasyMD is able to run in any computing system that has an operative system that supports Python3, which includes the currently three most common operative systems which are Windows, Linux and Mac OS.
 
-#### INTRODUCTION TO MARKDOWN:
+#### INTRODUCTION TO MARKDOWN
 
 MarkDown language is a lightweight markup language with plain text formatting syntax. MarkDown is often used to format README files which usually comes with a piece of software, containing important information about the installation or maybe usage of a certain software program. Furthermore, it is used for writing messages in online discussion forums, on informational websites or blogs and to create rich text using a plain text editor. This markup language help the user to  controls the display of documents, formats words, creates lists, among other means. Every text file that has .md or .markdown extension is written in MarkDown language syntax.
 
