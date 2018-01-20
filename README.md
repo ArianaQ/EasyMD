@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/ArianaQ/EasyMD/master/EasyMDLogo2.png" alt="EasyMD"/><br>
   <font face = "Courier New" color="DIMGRAY">By: Ariana Q & Wilson V<br><b>ICOM 4036</b></font></p><br>
  
-[![WATCH THE VIDEO!](https://img.youtube.com/vi/<6HB0KqA5zfQ>/1.jpg)](https://www.youtube.com/watch?v=6HB0KqA5zfQ)
+[![WATCH THE VIDEO!](https://raw.githubusercontent.com/ArianaQ/EasyMD/master/VideoImage.png)](https://www.youtube.com/watch?v=6HB0KqA5zfQ)
 
 
 ## EasyMD EXPLAINED (VIDEO)
