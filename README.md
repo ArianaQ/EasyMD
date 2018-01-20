@@ -28,4 +28,5 @@ This markup language is rapidly becoming the writing standard for writers, scien
 
 ## **LINK TO CODE AND DOCUMENTATION**
 GITHUB: https://github.com/ArianaQ/EasyMD
+
 DOWNLOAD AS ZIP: https://github.com/ArianaQ/EasyMD/zipball/master
