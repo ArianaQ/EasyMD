@@ -136,76 +136,148 @@ state 0
     (22) clean_text -> . CLEAN_TEXT
     (23) clean_text -> . CLEAN_TEXT compound
 
-    LSQUARE_PAREN   shift and go to state 8
-    CLEAN_TEXT      shift and go to state 10
+    LSQUARE_PAREN   shift and go to state 15
+    CLEAN_TEXT      shift and go to state 2
 
-    quote                          shift and go to state 1
-    user                           shift and go to state 3
-    strike                         shift and go to state 9
-    link                           shift and go to state 11
-    code                           shift and go to state 2
-    taskcheck                      shift and go to state 13
-    expression                     shift and go to state 14
-    italic                         shift and go to state 4
-    header                         shift and go to state 5
-    clean_text                     shift and go to state 12
-    bullet                         shift and go to state 15
-    num                            shift and go to state 6
-    bold                           shift and go to state 7
-    image                          shift and go to state 16
-    emoji                          shift and go to state 17
-    task                           shift and go to state 18
+    task                           shift and go to state 4
+    emoji                          shift and go to state 12
+    code                           shift and go to state 3
+    header                         shift and go to state 7
+    image                          shift and go to state 5
+    strike                         shift and go to state 14
+    bullet                         shift and go to state 9
+    expression                     shift and go to state 6
+    link                           shift and go to state 1
+    italic                         shift and go to state 8
+    quote                          shift and go to state 16
+    taskcheck                      shift and go to state 11
+    num                            shift and go to state 17
+    clean_text                     shift and go to state 18
+    user                           shift and go to state 13
+    bold                           shift and go to state 10
 
 state 1
 
-    (9) expression -> quote .
+    (8) expression -> link .
 
-    $end            reduce using rule 9 (expression -> quote .)
+    $end            reduce using rule 8 (expression -> link .)
 
 
 state 2
+
+    (22) clean_text -> CLEAN_TEXT .
+    (23) clean_text -> CLEAN_TEXT . compound
+    (24) compound -> . bold
+    (25) compound -> . italic
+    (26) compound -> . strike
+    (27) compound -> . user
+    (28) compound -> . image
+    (29) compound -> . link
+    (30) compound -> . emoji
+    (31) bold -> . LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN
+    (32) italic -> . LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN
+    (33) strike -> . LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN
+    (34) user -> . LSQUARE_PAREN USER TEXT RSQUARE_PAREN
+    (35) image -> . LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN
+    (37) link -> . LSQUARE_PAREN LINK TEXT RSQUARE_PAREN
+    (39) emoji -> . LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN
+
+    $end            reduce using rule 22 (clean_text -> CLEAN_TEXT .)
+    LSQUARE_PAREN   shift and go to state 24
+
+    link                           shift and go to state 19
+    italic                         shift and go to state 25
+    compound                       shift and go to state 26
+    emoji                          shift and go to state 20
+    user                           shift and go to state 21
+    image                          shift and go to state 22
+    strike                         shift and go to state 23
+    bold                           shift and go to state 27
+
+state 3
 
     (11) expression -> code .
 
     $end            reduce using rule 11 (expression -> code .)
 
 
-state 3
-
-    (5) expression -> user .
-
-    $end            reduce using rule 5 (expression -> user .)
-
-
 state 4
 
-    (3) expression -> italic .
+    (13) expression -> task .
 
-    $end            reduce using rule 3 (expression -> italic .)
+    $end            reduce using rule 13 (expression -> task .)
 
 
 state 5
+
+    (6) expression -> image .
+
+    $end            reduce using rule 6 (expression -> image .)
+
+
+state 6
+
+    (0) S' -> expression .
+
+
+
+state 7
 
     (1) expression -> header .
 
     $end            reduce using rule 1 (expression -> header .)
 
 
-state 6
+state 8
 
-    (12) expression -> num .
+    (3) expression -> italic .
 
-    $end            reduce using rule 12 (expression -> num .)
+    $end            reduce using rule 3 (expression -> italic .)
 
 
-state 7
+state 9
+
+    (7) expression -> bullet .
+
+    $end            reduce using rule 7 (expression -> bullet .)
+
+
+state 10
 
     (2) expression -> bold .
 
     $end            reduce using rule 2 (expression -> bold .)
 
 
-state 8
+state 11
+
+    (14) expression -> taskcheck .
+
+    $end            reduce using rule 14 (expression -> taskcheck .)
+
+
+state 12
+
+    (10) expression -> emoji .
+
+    $end            reduce using rule 10 (expression -> emoji .)
+
+
+state 13
+
+    (5) expression -> user .
+
+    $end            reduce using rule 5 (expression -> user .)
+
+
+state 14
+
+    (4) expression -> strike .
+
+    $end            reduce using rule 4 (expression -> strike .)
+
+
+state 15
 
     (16) header -> LSQUARE_PAREN . HEADER1 TEXT RSQUARE_PAREN
     (17) header -> LSQUARE_PAREN . HEADER2 TEXT RSQUARE_PAREN
@@ -227,254 +299,84 @@ state 8
     (42) task -> LSQUARE_PAREN . TASK TEXT RSQUARE_PAREN
     (43) taskcheck -> LSQUARE_PAREN . TASKCHECK TEXT RSQUARE_PAREN
 
-    HEADER1         shift and go to state 31
-    HEADER2         shift and go to state 21
-    HEADER3         shift and go to state 32
-    HEADER4         shift and go to state 19
-    HEADER5         shift and go to state 23
-    HEADER6         shift and go to state 24
-    BOLD            shift and go to state 29
-    ITALIC          shift and go to state 28
-    STRIKE          shift and go to state 34
-    USER            shift and go to state 33
-    IMAGE           shift and go to state 25
-    BULLET          shift and go to state 36
-    LINK            shift and go to state 30
-    QUOTE           shift and go to state 20
-    EMOJI           shift and go to state 37
-    CODE            shift and go to state 35
-    NUM             shift and go to state 26
-    TASK            shift and go to state 22
-    TASKCHECK       shift and go to state 27
+    HEADER1         shift and go to state 41
+    HEADER2         shift and go to state 43
+    HEADER3         shift and go to state 45
+    HEADER4         shift and go to state 28
+    HEADER5         shift and go to state 40
+    HEADER6         shift and go to state 35
+    BOLD            shift and go to state 39
+    ITALIC          shift and go to state 30
+    STRIKE          shift and go to state 37
+    USER            shift and go to state 44
+    IMAGE           shift and go to state 38
+    BULLET          shift and go to state 29
+    LINK            shift and go to state 33
+    QUOTE           shift and go to state 42
+    EMOJI           shift and go to state 32
+    CODE            shift and go to state 34
+    NUM             shift and go to state 36
+    TASK            shift and go to state 31
+    TASKCHECK       shift and go to state 46
 
 
-state 9
+state 16
 
-    (4) expression -> strike .
+    (9) expression -> quote .
 
-    $end            reduce using rule 4 (expression -> strike .)
-
-
-state 10
-
-    (22) clean_text -> CLEAN_TEXT .
-    (23) clean_text -> CLEAN_TEXT . compound
-    (24) compound -> . bold
-    (25) compound -> . italic
-    (26) compound -> . strike
-    (27) compound -> . user
-    (28) compound -> . image
-    (29) compound -> . link
-    (30) compound -> . emoji
-    (31) bold -> . LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN
-    (32) italic -> . LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN
-    (33) strike -> . LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN
-    (34) user -> . LSQUARE_PAREN USER TEXT RSQUARE_PAREN
-    (35) image -> . LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN
-    (37) link -> . LSQUARE_PAREN LINK TEXT RSQUARE_PAREN
-    (39) emoji -> . LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN
-
-    $end            reduce using rule 22 (clean_text -> CLEAN_TEXT .)
-    LSQUARE_PAREN   shift and go to state 38
-
-    user                           shift and go to state 43
-    italic                         shift and go to state 44
-    strike                         shift and go to state 39
-    link                           shift and go to state 40
-    bold                           shift and go to state 45
-    compound                       shift and go to state 41
-    emoji                          shift and go to state 46
-    image                          shift and go to state 42
-
-state 11
-
-    (8) expression -> link .
-
-    $end            reduce using rule 8 (expression -> link .)
+    $end            reduce using rule 9 (expression -> quote .)
 
 
-state 12
+state 17
+
+    (12) expression -> num .
+
+    $end            reduce using rule 12 (expression -> num .)
+
+
+state 18
 
     (15) expression -> clean_text .
 
     $end            reduce using rule 15 (expression -> clean_text .)
 
 
-state 13
-
-    (14) expression -> taskcheck .
-
-    $end            reduce using rule 14 (expression -> taskcheck .)
-
-
-state 14
-
-    (0) S' -> expression .
-
-
-
-state 15
-
-    (7) expression -> bullet .
-
-    $end            reduce using rule 7 (expression -> bullet .)
-
-
-state 16
-
-    (6) expression -> image .
-
-    $end            reduce using rule 6 (expression -> image .)
-
-
-state 17
-
-    (10) expression -> emoji .
-
-    $end            reduce using rule 10 (expression -> emoji .)
-
-
-state 18
-
-    (13) expression -> task .
-
-    $end            reduce using rule 13 (expression -> task .)
-
-
 state 19
 
-    (19) header -> LSQUARE_PAREN HEADER4 . TEXT RSQUARE_PAREN
+    (29) compound -> link .
 
-    TEXT            shift and go to state 47
+    $end            reduce using rule 29 (compound -> link .)
 
 
 state 20
 
-    (38) quote -> LSQUARE_PAREN QUOTE . TEXT RSQUARE_PAREN
+    (30) compound -> emoji .
 
-    TEXT            shift and go to state 48
+    $end            reduce using rule 30 (compound -> emoji .)
 
 
 state 21
 
-    (17) header -> LSQUARE_PAREN HEADER2 . TEXT RSQUARE_PAREN
+    (27) compound -> user .
 
-    TEXT            shift and go to state 49
+    $end            reduce using rule 27 (compound -> user .)
 
 
 state 22
 
-    (42) task -> LSQUARE_PAREN TASK . TEXT RSQUARE_PAREN
+    (28) compound -> image .
 
-    TEXT            shift and go to state 50
+    $end            reduce using rule 28 (compound -> image .)
 
 
 state 23
 
-    (20) header -> LSQUARE_PAREN HEADER5 . TEXT RSQUARE_PAREN
+    (26) compound -> strike .
 
-    TEXT            shift and go to state 51
+    $end            reduce using rule 26 (compound -> strike .)
 
 
 state 24
-
-    (21) header -> LSQUARE_PAREN HEADER6 . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 52
-
-
-state 25
-
-    (35) image -> LSQUARE_PAREN IMAGE . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 53
-
-
-state 26
-
-    (41) num -> LSQUARE_PAREN NUM . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 54
-
-
-state 27
-
-    (43) taskcheck -> LSQUARE_PAREN TASKCHECK . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 55
-
-
-state 28
-
-    (32) italic -> LSQUARE_PAREN ITALIC . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 56
-
-
-state 29
-
-    (31) bold -> LSQUARE_PAREN BOLD . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 57
-
-
-state 30
-
-    (37) link -> LSQUARE_PAREN LINK . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 58
-
-
-state 31
-
-    (16) header -> LSQUARE_PAREN HEADER1 . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 59
-
-
-state 32
-
-    (18) header -> LSQUARE_PAREN HEADER3 . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 60
-
-
-state 33
-
-    (34) user -> LSQUARE_PAREN USER . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 61
-
-
-state 34
-
-    (33) strike -> LSQUARE_PAREN STRIKE . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 62
-
-
-state 35
-
-    (40) code -> LSQUARE_PAREN CODE . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 63
-
-
-state 36
-
-    (36) bullet -> LSQUARE_PAREN BULLET . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 64
-
-
-state 37
-
-    (39) emoji -> LSQUARE_PAREN EMOJI . TEXT RSQUARE_PAREN
-
-    TEXT            shift and go to state 65
-
-
-state 38
 
     (31) bold -> LSQUARE_PAREN . BOLD TEXT RSQUARE_PAREN
     (32) italic -> LSQUARE_PAREN . ITALIC TEXT RSQUARE_PAREN
@@ -484,69 +386,167 @@ state 38
     (37) link -> LSQUARE_PAREN . LINK TEXT RSQUARE_PAREN
     (39) emoji -> LSQUARE_PAREN . EMOJI TEXT RSQUARE_PAREN
 
-    BOLD            shift and go to state 29
-    ITALIC          shift and go to state 28
-    STRIKE          shift and go to state 34
-    USER            shift and go to state 33
-    IMAGE           shift and go to state 25
-    LINK            shift and go to state 30
-    EMOJI           shift and go to state 37
+    BOLD            shift and go to state 39
+    ITALIC          shift and go to state 30
+    STRIKE          shift and go to state 37
+    USER            shift and go to state 44
+    IMAGE           shift and go to state 38
+    LINK            shift and go to state 33
+    EMOJI           shift and go to state 32
 
 
-state 39
-
-    (26) compound -> strike .
-
-    $end            reduce using rule 26 (compound -> strike .)
-
-
-state 40
-
-    (29) compound -> link .
-
-    $end            reduce using rule 29 (compound -> link .)
-
-
-state 41
-
-    (23) clean_text -> CLEAN_TEXT compound .
-
-    $end            reduce using rule 23 (clean_text -> CLEAN_TEXT compound .)
-
-
-state 42
-
-    (28) compound -> image .
-
-    $end            reduce using rule 28 (compound -> image .)
-
-
-state 43
-
-    (27) compound -> user .
-
-    $end            reduce using rule 27 (compound -> user .)
-
-
-state 44
+state 25
 
     (25) compound -> italic .
 
     $end            reduce using rule 25 (compound -> italic .)
 
 
-state 45
+state 26
+
+    (23) clean_text -> CLEAN_TEXT compound .
+
+    $end            reduce using rule 23 (clean_text -> CLEAN_TEXT compound .)
+
+
+state 27
 
     (24) compound -> bold .
 
     $end            reduce using rule 24 (compound -> bold .)
 
 
+state 28
+
+    (19) header -> LSQUARE_PAREN HEADER4 . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 47
+
+
+state 29
+
+    (36) bullet -> LSQUARE_PAREN BULLET . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 48
+
+
+state 30
+
+    (32) italic -> LSQUARE_PAREN ITALIC . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 49
+
+
+state 31
+
+    (42) task -> LSQUARE_PAREN TASK . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 50
+
+
+state 32
+
+    (39) emoji -> LSQUARE_PAREN EMOJI . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 51
+
+
+state 33
+
+    (37) link -> LSQUARE_PAREN LINK . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 52
+
+
+state 34
+
+    (40) code -> LSQUARE_PAREN CODE . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 53
+
+
+state 35
+
+    (21) header -> LSQUARE_PAREN HEADER6 . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 54
+
+
+state 36
+
+    (41) num -> LSQUARE_PAREN NUM . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 55
+
+
+state 37
+
+    (33) strike -> LSQUARE_PAREN STRIKE . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 56
+
+
+state 38
+
+    (35) image -> LSQUARE_PAREN IMAGE . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 57
+
+
+state 39
+
+    (31) bold -> LSQUARE_PAREN BOLD . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 58
+
+
+state 40
+
+    (20) header -> LSQUARE_PAREN HEADER5 . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 59
+
+
+state 41
+
+    (16) header -> LSQUARE_PAREN HEADER1 . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 60
+
+
+state 42
+
+    (38) quote -> LSQUARE_PAREN QUOTE . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 61
+
+
+state 43
+
+    (17) header -> LSQUARE_PAREN HEADER2 . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 62
+
+
+state 44
+
+    (34) user -> LSQUARE_PAREN USER . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 63
+
+
+state 45
+
+    (18) header -> LSQUARE_PAREN HEADER3 . TEXT RSQUARE_PAREN
+
+    TEXT            shift and go to state 64
+
+
 state 46
 
-    (30) compound -> emoji .
+    (43) taskcheck -> LSQUARE_PAREN TASKCHECK . TEXT RSQUARE_PAREN
 
-    $end            reduce using rule 30 (compound -> emoji .)
+    TEXT            shift and go to state 65
 
 
 state 47
@@ -558,14 +558,14 @@ state 47
 
 state 48
 
-    (38) quote -> LSQUARE_PAREN QUOTE TEXT . RSQUARE_PAREN
+    (36) bullet -> LSQUARE_PAREN BULLET TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 67
 
 
 state 49
 
-    (17) header -> LSQUARE_PAREN HEADER2 TEXT . RSQUARE_PAREN
+    (32) italic -> LSQUARE_PAREN ITALIC TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 68
 
@@ -579,105 +579,105 @@ state 50
 
 state 51
 
-    (20) header -> LSQUARE_PAREN HEADER5 TEXT . RSQUARE_PAREN
+    (39) emoji -> LSQUARE_PAREN EMOJI TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 70
 
 
 state 52
 
-    (21) header -> LSQUARE_PAREN HEADER6 TEXT . RSQUARE_PAREN
+    (37) link -> LSQUARE_PAREN LINK TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 71
 
 
 state 53
 
-    (35) image -> LSQUARE_PAREN IMAGE TEXT . RSQUARE_PAREN
+    (40) code -> LSQUARE_PAREN CODE TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 72
 
 
 state 54
 
-    (41) num -> LSQUARE_PAREN NUM TEXT . RSQUARE_PAREN
+    (21) header -> LSQUARE_PAREN HEADER6 TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 73
 
 
 state 55
 
-    (43) taskcheck -> LSQUARE_PAREN TASKCHECK TEXT . RSQUARE_PAREN
+    (41) num -> LSQUARE_PAREN NUM TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 74
 
 
 state 56
 
-    (32) italic -> LSQUARE_PAREN ITALIC TEXT . RSQUARE_PAREN
+    (33) strike -> LSQUARE_PAREN STRIKE TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 75
 
 
 state 57
 
-    (31) bold -> LSQUARE_PAREN BOLD TEXT . RSQUARE_PAREN
+    (35) image -> LSQUARE_PAREN IMAGE TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 76
 
 
 state 58
 
-    (37) link -> LSQUARE_PAREN LINK TEXT . RSQUARE_PAREN
+    (31) bold -> LSQUARE_PAREN BOLD TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 77
 
 
 state 59
 
-    (16) header -> LSQUARE_PAREN HEADER1 TEXT . RSQUARE_PAREN
+    (20) header -> LSQUARE_PAREN HEADER5 TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 78
 
 
 state 60
 
-    (18) header -> LSQUARE_PAREN HEADER3 TEXT . RSQUARE_PAREN
+    (16) header -> LSQUARE_PAREN HEADER1 TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 79
 
 
 state 61
 
-    (34) user -> LSQUARE_PAREN USER TEXT . RSQUARE_PAREN
+    (38) quote -> LSQUARE_PAREN QUOTE TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 80
 
 
 state 62
 
-    (33) strike -> LSQUARE_PAREN STRIKE TEXT . RSQUARE_PAREN
+    (17) header -> LSQUARE_PAREN HEADER2 TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 81
 
 
 state 63
 
-    (40) code -> LSQUARE_PAREN CODE TEXT . RSQUARE_PAREN
+    (34) user -> LSQUARE_PAREN USER TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 82
 
 
 state 64
 
-    (36) bullet -> LSQUARE_PAREN BULLET TEXT . RSQUARE_PAREN
+    (18) header -> LSQUARE_PAREN HEADER3 TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 83
 
 
 state 65
 
-    (39) emoji -> LSQUARE_PAREN EMOJI TEXT . RSQUARE_PAREN
+    (43) taskcheck -> LSQUARE_PAREN TASKCHECK TEXT . RSQUARE_PAREN
 
     RSQUARE_PAREN   shift and go to state 84
 
@@ -691,16 +691,16 @@ state 66
 
 state 67
 
-    (38) quote -> LSQUARE_PAREN QUOTE TEXT RSQUARE_PAREN .
+    (36) bullet -> LSQUARE_PAREN BULLET TEXT RSQUARE_PAREN .
 
-    $end            reduce using rule 38 (quote -> LSQUARE_PAREN QUOTE TEXT RSQUARE_PAREN .)
+    $end            reduce using rule 36 (bullet -> LSQUARE_PAREN BULLET TEXT RSQUARE_PAREN .)
 
 
 state 68
 
-    (17) header -> LSQUARE_PAREN HEADER2 TEXT RSQUARE_PAREN .
+    (32) italic -> LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN .
 
-    $end            reduce using rule 17 (header -> LSQUARE_PAREN HEADER2 TEXT RSQUARE_PAREN .)
+    $end            reduce using rule 32 (italic -> LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN .)
 
 
 state 69
@@ -712,105 +712,105 @@ state 69
 
 state 70
 
-    (20) header -> LSQUARE_PAREN HEADER5 TEXT RSQUARE_PAREN .
+    (39) emoji -> LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN .
 
-    $end            reduce using rule 20 (header -> LSQUARE_PAREN HEADER5 TEXT RSQUARE_PAREN .)
+    $end            reduce using rule 39 (emoji -> LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN .)
 
 
 state 71
-
-    (21) header -> LSQUARE_PAREN HEADER6 TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 21 (header -> LSQUARE_PAREN HEADER6 TEXT RSQUARE_PAREN .)
-
-
-state 72
-
-    (35) image -> LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 35 (image -> LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN .)
-
-
-state 73
-
-    (41) num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 41 (num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN .)
-
-
-state 74
-
-    (43) taskcheck -> LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 43 (taskcheck -> LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN .)
-
-
-state 75
-
-    (32) italic -> LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 32 (italic -> LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN .)
-
-
-state 76
-
-    (31) bold -> LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 31 (bold -> LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN .)
-
-
-state 77
 
     (37) link -> LSQUARE_PAREN LINK TEXT RSQUARE_PAREN .
 
     $end            reduce using rule 37 (link -> LSQUARE_PAREN LINK TEXT RSQUARE_PAREN .)
 
 
-state 78
-
-    (16) header -> LSQUARE_PAREN HEADER1 TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 16 (header -> LSQUARE_PAREN HEADER1 TEXT RSQUARE_PAREN .)
-
-
-state 79
-
-    (18) header -> LSQUARE_PAREN HEADER3 TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 18 (header -> LSQUARE_PAREN HEADER3 TEXT RSQUARE_PAREN .)
-
-
-state 80
-
-    (34) user -> LSQUARE_PAREN USER TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 34 (user -> LSQUARE_PAREN USER TEXT RSQUARE_PAREN .)
-
-
-state 81
-
-    (33) strike -> LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN .
-
-    $end            reduce using rule 33 (strike -> LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN .)
-
-
-state 82
+state 72
 
     (40) code -> LSQUARE_PAREN CODE TEXT RSQUARE_PAREN .
 
     $end            reduce using rule 40 (code -> LSQUARE_PAREN CODE TEXT RSQUARE_PAREN .)
 
 
+state 73
+
+    (21) header -> LSQUARE_PAREN HEADER6 TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 21 (header -> LSQUARE_PAREN HEADER6 TEXT RSQUARE_PAREN .)
+
+
+state 74
+
+    (41) num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 41 (num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN .)
+
+
+state 75
+
+    (33) strike -> LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 33 (strike -> LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN .)
+
+
+state 76
+
+    (35) image -> LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 35 (image -> LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN .)
+
+
+state 77
+
+    (31) bold -> LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 31 (bold -> LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN .)
+
+
+state 78
+
+    (20) header -> LSQUARE_PAREN HEADER5 TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 20 (header -> LSQUARE_PAREN HEADER5 TEXT RSQUARE_PAREN .)
+
+
+state 79
+
+    (16) header -> LSQUARE_PAREN HEADER1 TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 16 (header -> LSQUARE_PAREN HEADER1 TEXT RSQUARE_PAREN .)
+
+
+state 80
+
+    (38) quote -> LSQUARE_PAREN QUOTE TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 38 (quote -> LSQUARE_PAREN QUOTE TEXT RSQUARE_PAREN .)
+
+
+state 81
+
+    (17) header -> LSQUARE_PAREN HEADER2 TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 17 (header -> LSQUARE_PAREN HEADER2 TEXT RSQUARE_PAREN .)
+
+
+state 82
+
+    (34) user -> LSQUARE_PAREN USER TEXT RSQUARE_PAREN .
+
+    $end            reduce using rule 34 (user -> LSQUARE_PAREN USER TEXT RSQUARE_PAREN .)
+
+
 state 83
 
-    (36) bullet -> LSQUARE_PAREN BULLET TEXT RSQUARE_PAREN .
+    (18) header -> LSQUARE_PAREN HEADER3 TEXT RSQUARE_PAREN .
 
-    $end            reduce using rule 36 (bullet -> LSQUARE_PAREN BULLET TEXT RSQUARE_PAREN .)
+    $end            reduce using rule 18 (header -> LSQUARE_PAREN HEADER3 TEXT RSQUARE_PAREN .)
 
 
 state 84
 
-    (39) emoji -> LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN .
+    (43) taskcheck -> LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN .
 
-    $end            reduce using rule 39 (emoji -> LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN .)
+    $end            reduce using rule 43 (taskcheck -> LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN .)
 

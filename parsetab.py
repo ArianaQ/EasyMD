@@ -8,7 +8,7 @@ _lr_method = 'LALR'
 
 _lr_signature = 'BOLD BULLET CLEAN_TEXT CODE EMOJI HEADER1 HEADER2 HEADER3 HEADER4 HEADER5 HEADER6 IMAGE ITALIC LINK LSQUARE_PAREN NUM QUOTE RSQUARE_PAREN STRIKE TASK TASKCHECK TEXT USERexpression : header \n                | bold \n                | italic\n                | strike\n                | user\n                | image\n                | bullet\n                | link\n                | quote\n                | emoji\n                | code\n                | num\n                | task\n                | taskcheck\n                | clean_textheader : LSQUARE_PAREN HEADER1  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER2  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER3  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER4  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER5  TEXT RSQUARE_PAREN\n            | LSQUARE_PAREN HEADER6  TEXT RSQUARE_PAREN\n    clean_text : CLEAN_TEXT\n                    | CLEAN_TEXT compound\n                    compound : bold \n                | italic\n                | strike\n                | user\n                | image\n                | link\n                | emojibold : LSQUARE_PAREN BOLD TEXT RSQUARE_PARENitalic : LSQUARE_PAREN ITALIC TEXT RSQUARE_PARENstrike : LSQUARE_PAREN STRIKE TEXT RSQUARE_PARENuser : LSQUARE_PAREN USER TEXT RSQUARE_PAREN image : LSQUARE_PAREN IMAGE TEXT RSQUARE_PARENbullet : LSQUARE_PAREN BULLET TEXT RSQUARE_PARENlink : LSQUARE_PAREN LINK TEXT  RSQUARE_PARENquote : LSQUARE_PAREN QUOTE TEXT RSQUARE_PARENemoji : LSQUARE_PAREN EMOJI TEXT RSQUARE_PARENcode : LSQUARE_PAREN CODE TEXT RSQUARE_PARENnum : LSQUARE_PAREN NUM TEXT RSQUARE_PARENtask : LSQUARE_PAREN TASK TEXT RSQUARE_PARENtaskcheck : LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN'
     
-_lr_action_items = {'EMOJI':([8,38,],[37,37,]),'QUOTE':([8,],[20,]),'HEADER2':([8,],[21,]),'TASK':([8,],[22,]),'RSQUARE_PAREN':([47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,],[66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,]),'HEADER5':([8,],[23,]),'IMAGE':([8,38,],[25,25,]),'HEADER6':([8,],[24,]),'NUM':([8,],[26,]),'BULLET':([8,],[36,]),'TASKCHECK':([8,],[27,]),'ITALIC':([8,38,],[28,28,]),'BOLD':([8,38,],[29,29,]),'LINK':([8,38,],[30,30,]),'HEADER4':([8,],[19,]),'LSQUARE_PAREN':([0,10,],[8,38,]),'HEADER1':([8,],[31,]),'CLEAN_TEXT':([0,],[10,]),'HEADER3':([8,],[32,]),'STRIKE':([8,38,],[34,34,]),'CODE':([8,],[35,]),'USER':([8,38,],[33,33,]),'$end':([1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,39,40,41,42,43,44,45,46,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,],[-9,-11,-5,-3,-1,-12,-2,-4,-22,-8,-15,-14,0,-7,-6,-10,-13,-26,-29,-23,-28,-27,-25,-24,-30,-19,-38,-17,-42,-20,-21,-35,-41,-43,-32,-31,-37,-16,-18,-34,-33,-40,-36,-39,]),'TEXT':([19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,],[47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,]),}
+_lr_action_items = {'HEADER4':([15,],[28,]),'CLEAN_TEXT':([0,],[2,]),'BULLET':([15,],[29,]),'ITALIC':([15,24,],[30,30,]),'TASK':([15,],[31,]),'EMOJI':([15,24,],[32,32,]),'$end':([1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,25,26,27,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,],[-8,-22,-11,-13,-6,0,-1,-3,-7,-2,-14,-10,-5,-4,-9,-12,-15,-29,-30,-27,-28,-26,-25,-23,-24,-19,-36,-32,-42,-39,-37,-40,-21,-41,-33,-35,-31,-20,-16,-38,-17,-34,-18,-43,]),'LINK':([15,24,],[33,33,]),'LSQUARE_PAREN':([0,2,],[15,24,]),'NUM':([15,],[36,]),'STRIKE':([15,24,],[37,37,]),'IMAGE':([15,24,],[38,38,]),'BOLD':([15,24,],[39,39,]),'HEADER5':([15,],[40,]),'HEADER1':([15,],[41,]),'QUOTE':([15,],[42,]),'RSQUARE_PAREN':([47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,],[66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,]),'HEADER2':([15,],[43,]),'CODE':([15,],[34,]),'HEADER6':([15,],[35,]),'TEXT':([28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,],[47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,]),'USER':([15,24,],[44,44,]),'HEADER3':([15,],[45,]),'TASKCHECK':([15,],[46,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'quote':([0,],[1,]),'code':([0,],[2,]),'user':([0,10,],[3,43,]),'strike':([0,10,],[9,39,]),'link':([0,10,],[11,40,]),'compound':([10,],[41,]),'clean_text':([0,],[12,]),'taskcheck':([0,],[13,]),'expression':([0,],[14,]),'italic':([0,10,],[4,44,]),'bullet':([0,],[15,]),'header':([0,],[5,]),'num':([0,],[6,]),'bold':([0,10,],[7,45,]),'image':([0,10,],[16,42,]),'emoji':([0,10,],[17,46,]),'task':([0,],[18,]),}
+_lr_goto_items = {'task':([0,],[4,]),'taskcheck':([0,],[11,]),'emoji':([0,2,],[12,20,]),'code':([0,],[3,]),'header':([0,],[7,]),'image':([0,2,],[5,22,]),'strike':([0,2,],[14,23,]),'bullet':([0,],[9,]),'expression':([0,],[6,]),'link':([0,2,],[1,19,]),'italic':([0,2,],[8,25,]),'compound':([2,],[26,]),'quote':([0,],[16,]),'num':([0,],[17,]),'clean_text':([0,],[18,]),'user':([0,2,],[13,21,]),'bold':([0,2,],[10,27,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,47 +27,47 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> expression","S'",1,None,None,None),
-  ('expression -> header','expression',1,'p_expression','easy_md_parser.py',12),
-  ('expression -> bold','expression',1,'p_expression','easy_md_parser.py',13),
-  ('expression -> italic','expression',1,'p_expression','easy_md_parser.py',14),
-  ('expression -> strike','expression',1,'p_expression','easy_md_parser.py',15),
-  ('expression -> user','expression',1,'p_expression','easy_md_parser.py',16),
-  ('expression -> image','expression',1,'p_expression','easy_md_parser.py',17),
-  ('expression -> bullet','expression',1,'p_expression','easy_md_parser.py',18),
-  ('expression -> link','expression',1,'p_expression','easy_md_parser.py',19),
-  ('expression -> quote','expression',1,'p_expression','easy_md_parser.py',20),
-  ('expression -> emoji','expression',1,'p_expression','easy_md_parser.py',21),
-  ('expression -> code','expression',1,'p_expression','easy_md_parser.py',22),
-  ('expression -> num','expression',1,'p_expression','easy_md_parser.py',23),
-  ('expression -> task','expression',1,'p_expression','easy_md_parser.py',24),
-  ('expression -> taskcheck','expression',1,'p_expression','easy_md_parser.py',25),
-  ('expression -> clean_text','expression',1,'p_expression','easy_md_parser.py',26),
-  ('header -> LSQUARE_PAREN HEADER1 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',32),
-  ('header -> LSQUARE_PAREN HEADER2 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',33),
-  ('header -> LSQUARE_PAREN HEADER3 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',34),
-  ('header -> LSQUARE_PAREN HEADER4 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',35),
-  ('header -> LSQUARE_PAREN HEADER5 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',36),
-  ('header -> LSQUARE_PAREN HEADER6 TEXT RSQUARE_PAREN','header',4,'p_header','easy_md_parser.py',37),
-  ('clean_text -> CLEAN_TEXT','clean_text',1,'p_clean_text','easy_md_parser.py',54),
-  ('clean_text -> CLEAN_TEXT compound','clean_text',2,'p_clean_text','easy_md_parser.py',55),
-  ('compound -> bold','compound',1,'p_compund','easy_md_parser.py',88),
-  ('compound -> italic','compound',1,'p_compund','easy_md_parser.py',89),
-  ('compound -> strike','compound',1,'p_compund','easy_md_parser.py',90),
-  ('compound -> user','compound',1,'p_compund','easy_md_parser.py',91),
-  ('compound -> image','compound',1,'p_compund','easy_md_parser.py',92),
-  ('compound -> link','compound',1,'p_compund','easy_md_parser.py',93),
-  ('compound -> emoji','compound',1,'p_compund','easy_md_parser.py',94),
-  ('bold -> LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN','bold',4,'p_bold','easy_md_parser.py',98),
-  ('italic -> LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN','italic',4,'p_italic','easy_md_parser.py',103),
-  ('strike -> LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN','strike',4,'p_strike','easy_md_parser.py',108),
-  ('user -> LSQUARE_PAREN USER TEXT RSQUARE_PAREN','user',4,'p_user','easy_md_parser.py',113),
-  ('image -> LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN','image',4,'p_image','easy_md_parser.py',118),
-  ('bullet -> LSQUARE_PAREN BULLET TEXT RSQUARE_PAREN','bullet',4,'p_bullet','easy_md_parser.py',123),
-  ('link -> LSQUARE_PAREN LINK TEXT RSQUARE_PAREN','link',4,'p_link','easy_md_parser.py',128),
-  ('quote -> LSQUARE_PAREN QUOTE TEXT RSQUARE_PAREN','quote',4,'p_quote','easy_md_parser.py',133),
-  ('emoji -> LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN','emoji',4,'p_emoji','easy_md_parser.py',138),
-  ('code -> LSQUARE_PAREN CODE TEXT RSQUARE_PAREN','code',4,'p_code','easy_md_parser.py',143),
-  ('num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN','num',4,'p_num','easy_md_parser.py',148),
-  ('task -> LSQUARE_PAREN TASK TEXT RSQUARE_PAREN','task',4,'p_task','easy_md_parser.py',154),
-  ('taskcheck -> LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN','taskcheck',4,'p_taskcheck','easy_md_parser.py',159),
+  ('expression -> header','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',12),
+  ('expression -> bold','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',13),
+  ('expression -> italic','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',14),
+  ('expression -> strike','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',15),
+  ('expression -> user','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',16),
+  ('expression -> image','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',17),
+  ('expression -> bullet','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',18),
+  ('expression -> link','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',19),
+  ('expression -> quote','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',20),
+  ('expression -> emoji','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',21),
+  ('expression -> code','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',22),
+  ('expression -> num','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',23),
+  ('expression -> task','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',24),
+  ('expression -> taskcheck','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',25),
+  ('expression -> clean_text','expression',1,'p_expression','EasyMD_UsrIntfc_Parser.py',26),
+  ('header -> LSQUARE_PAREN HEADER1 TEXT RSQUARE_PAREN','header',4,'p_header','EasyMD_UsrIntfc_Parser.py',32),
+  ('header -> LSQUARE_PAREN HEADER2 TEXT RSQUARE_PAREN','header',4,'p_header','EasyMD_UsrIntfc_Parser.py',33),
+  ('header -> LSQUARE_PAREN HEADER3 TEXT RSQUARE_PAREN','header',4,'p_header','EasyMD_UsrIntfc_Parser.py',34),
+  ('header -> LSQUARE_PAREN HEADER4 TEXT RSQUARE_PAREN','header',4,'p_header','EasyMD_UsrIntfc_Parser.py',35),
+  ('header -> LSQUARE_PAREN HEADER5 TEXT RSQUARE_PAREN','header',4,'p_header','EasyMD_UsrIntfc_Parser.py',36),
+  ('header -> LSQUARE_PAREN HEADER6 TEXT RSQUARE_PAREN','header',4,'p_header','EasyMD_UsrIntfc_Parser.py',37),
+  ('clean_text -> CLEAN_TEXT','clean_text',1,'p_clean_text','EasyMD_UsrIntfc_Parser.py',54),
+  ('clean_text -> CLEAN_TEXT compound','clean_text',2,'p_clean_text','EasyMD_UsrIntfc_Parser.py',55),
+  ('compound -> bold','compound',1,'p_compund','EasyMD_UsrIntfc_Parser.py',87),
+  ('compound -> italic','compound',1,'p_compund','EasyMD_UsrIntfc_Parser.py',88),
+  ('compound -> strike','compound',1,'p_compund','EasyMD_UsrIntfc_Parser.py',89),
+  ('compound -> user','compound',1,'p_compund','EasyMD_UsrIntfc_Parser.py',90),
+  ('compound -> image','compound',1,'p_compund','EasyMD_UsrIntfc_Parser.py',91),
+  ('compound -> link','compound',1,'p_compund','EasyMD_UsrIntfc_Parser.py',92),
+  ('compound -> emoji','compound',1,'p_compund','EasyMD_UsrIntfc_Parser.py',93),
+  ('bold -> LSQUARE_PAREN BOLD TEXT RSQUARE_PAREN','bold',4,'p_bold','EasyMD_UsrIntfc_Parser.py',96),
+  ('italic -> LSQUARE_PAREN ITALIC TEXT RSQUARE_PAREN','italic',4,'p_italic','EasyMD_UsrIntfc_Parser.py',101),
+  ('strike -> LSQUARE_PAREN STRIKE TEXT RSQUARE_PAREN','strike',4,'p_strike','EasyMD_UsrIntfc_Parser.py',106),
+  ('user -> LSQUARE_PAREN USER TEXT RSQUARE_PAREN','user',4,'p_user','EasyMD_UsrIntfc_Parser.py',111),
+  ('image -> LSQUARE_PAREN IMAGE TEXT RSQUARE_PAREN','image',4,'p_image','EasyMD_UsrIntfc_Parser.py',116),
+  ('bullet -> LSQUARE_PAREN BULLET TEXT RSQUARE_PAREN','bullet',4,'p_bullet','EasyMD_UsrIntfc_Parser.py',121),
+  ('link -> LSQUARE_PAREN LINK TEXT RSQUARE_PAREN','link',4,'p_link','EasyMD_UsrIntfc_Parser.py',126),
+  ('quote -> LSQUARE_PAREN QUOTE TEXT RSQUARE_PAREN','quote',4,'p_quote','EasyMD_UsrIntfc_Parser.py',131),
+  ('emoji -> LSQUARE_PAREN EMOJI TEXT RSQUARE_PAREN','emoji',4,'p_emoji','EasyMD_UsrIntfc_Parser.py',136),
+  ('code -> LSQUARE_PAREN CODE TEXT RSQUARE_PAREN','code',4,'p_code','EasyMD_UsrIntfc_Parser.py',141),
+  ('num -> LSQUARE_PAREN NUM TEXT RSQUARE_PAREN','num',4,'p_num','EasyMD_UsrIntfc_Parser.py',146),
+  ('task -> LSQUARE_PAREN TASK TEXT RSQUARE_PAREN','task',4,'p_task','EasyMD_UsrIntfc_Parser.py',152),
+  ('taskcheck -> LSQUARE_PAREN TASKCHECK TEXT RSQUARE_PAREN','taskcheck',4,'p_taskcheck','EasyMD_UsrIntfc_Parser.py',157),
 ]

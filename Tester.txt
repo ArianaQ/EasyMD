@@ -1,0 +1,85 @@
+----------Testing Headers----------
+[Header1 Header 1]
+[Header2 Header 2]
+[Header3 Header 3]
+[Header4 Header 4]
+[Header5 Header 5]
+[Header6 Header 6]
+----------Testing Emphasis----------
+This is [Italic italics text!]
+This is [Strike strike text!]
+This is [Bold bold text!]
+----------Testing Lists----------
+[Num1 First item of the numbered list.]
+[Num2 Second item of the numbered list.]
+[Num3 Third item of the numbered list.]
+[Num4 Fourth item of the numbered list.]
+[Num5 Fifth item of the numbered list.]
+[Bullet First item of the bullet list.]
+[Bullet Second item of the bullet list.]
+[Bullet Third item of the bullet list.]
+[Bullet Fourth item of the bullet list.]
+----------Testing Images----------
+[Image Dog Link http://i.ytimg.com/vi/opKg3fyqWt4/hqdefault.jpg]
+[Image Cat Link http://i0.wp.com/catnamescity.com/wp-content/uploads/2012/08/Cute-Girl-Cat-Names.jpg]
+----------Testing Links----------
+[Link http://google.com Text Google link] 
+Best website!
+[Link http://facebook.com Text Facebook link!] 
+Second best!
+----------Testing Block Quotes----------
+[Quote Dont Let Yesterday Take Up Too Much Of Today. -Will Rogers]
+[Quote There is only one thing that makes a dream impossible to achieve: the fear of failure. -Paulo Coelho]
+====================GITHUB MARKDOWN====================
+----------Testing username Mentions----------
+Ariana - username: [User ArianaQ]
+Wilson - username: [User wilx94]
+----------Testing task and taskcheck lists----------
+[TaskCheck Task checked 1]
+[TaskCheck Task checked 2]
+[Task Task unchecked 1]
+[Task Task unchecked 2]
+[TaskCheck Task checked 3]
+[Task Task unchecked 3]
+----------Testing code blocks----------
+[Code if (condition) do_this;]
+----------Testing emojis----------
+Camel: [Emoji camel]
+Blush: [Emoji blush]
+Worried: [Emoji worried]
+Heart: [Emoji heart]
+====================MIXING FUNCTIONALITIES====================
+[Italic Here we are]
+[Strike testing how]
+[Bold different]
+functionalities are [Bold ~~working together!~~]
+[Emoji woman] 
+My name is [Bold Ariana!]
+[Italic I really really **really** want you to check my github: ]
+[Emoji point_right]
+[User ArianaQ]
+That way you can check my [Bold work!]
+-----Here we are mixing list types:
+[Bullet Trying bullet first.]
+[TaskCheck Trying task checked **second**.]
+[Num3 Trying number list third.]
+[Task Trying task list fourth.]
+-----Here we are just creating a custom list with emojis:
+[Emoji one]
+Uno = [Bold One]
+[Emoji two]
+Dos = [Italic Two]
+[Emoji three]
+Tres = [Bold Three]
+[Emoji four]
+[Emoji x]
+Cuatro = [Strike **Two**]
+[Emoji four]
+[Emoji white_check_mark] 
+Cuatro = [Bold Four]
+[Emoji five]
+Cinco = [Bold Five]
+------
+[Bold Bye!]
+[Emoji v]
+Thank you for trying [Italic EasyMD!]

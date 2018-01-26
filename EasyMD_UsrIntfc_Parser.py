@@ -1,5 +1,5 @@
 import ply.yacc as yacc
-from easy_md import tokens
+from EasyMD_Lexer import tokens
 import os.path
 
 md_code = ''
@@ -60,7 +60,7 @@ def p_clean_text(p):
     global c_text
     c_text = True
     global bypass
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += p[1] + ' ' + bypass
     start = -1
@@ -80,6 +80,7 @@ def p_clean_text(p):
     else:
         p[0] = p[1] + bypass
     bypass = ''
+    previous_act = "cleantext"
     c_text = False
 
 
@@ -167,7 +168,7 @@ def new_line():
 def header1_to_md(text):
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '# ' + text
     previous_act = 'header'
@@ -177,7 +178,7 @@ def header1_to_md(text):
 def header2_to_md(text):
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '## ' + text
     previous_act = 'header'
@@ -187,7 +188,7 @@ def header2_to_md(text):
 def header3_to_md(text):
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '### ' + text
     previous_act = 'header'
@@ -197,7 +198,7 @@ def header3_to_md(text):
 def header4_to_md(text):
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '#### ' + text
     previous_act = 'header'
@@ -207,7 +208,7 @@ def header4_to_md(text):
 def header5_to_md(text):
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '##### ' + text
     previous_act = 'header'
@@ -217,7 +218,7 @@ def header5_to_md(text):
 def header6_to_md(text):
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '###### ' + text + ' '
     previous_act = 'header'
@@ -228,7 +229,7 @@ def bold_to_md(text):
     global bypass
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     if not c_text:
         md_code += '**' + text + '**' + ' '
@@ -241,7 +242,7 @@ def italic_to_md(text):
     global bypass
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     if not c_text:
         md_code += '*' + text + '*' + ' '
@@ -254,7 +255,7 @@ def strike_to_md(text):
     global bypass
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     if not c_text:
         md_code += ' ' + '~~' + text + '~~' + ' '
@@ -267,16 +268,15 @@ def user_to_md(text):
     global bypass
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '@' + text + ' '
-    # bypass = '@' + text + ' '
+    bypass = '@' + text + ' '
     previous_act = 'user'
     return '@' + text + ' '
 
 
 def image_to_md(text):
-    global bypass
     global md_code
     global previous_act
 
@@ -284,7 +284,7 @@ def image_to_md(text):
     link = temp[1]
     text = temp[0]
 
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '![' + text + ']' + '(' + link + ')' + ' '
     previous_act = 'image'
@@ -303,10 +303,9 @@ def link_to_md(text):
     temp = text.split('Text')
     link = temp[0]
     text = temp[1]
-    global bypass
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     if not c_text:
         md_code += '[' + text + ']' + '(' + link + ') '
@@ -317,7 +316,7 @@ def link_to_md(text):
 def quote_to_md(text):
     global md_code
     global previous_act
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     md_code += '>' + text + ' '
     previous_act = 'quote'
@@ -328,7 +327,7 @@ def emoji_to_md(text):
     global md_code
     global previous_act
     global bypass
-    if previous_act == 'list' or previous_act == 'quote':
+    if previous_act == 'list' or previous_act == 'quote' or previous_act == 'cleantext' or previous_act == 'image' or previous_act == 'code' or previous_act == 'task':
         md_code += '\n'
     bypass = ':' + text + ':' + ' '
     md_code += bypass
@@ -337,16 +336,14 @@ def emoji_to_md(text):
 
 
 def code_to_md(text):
-    global bypass
     global md_code
     global previous_act
-    md_code += "```" + text + "```" + ' '
+    md_code += "\n```" + text + "```" + ' '
     previous_act = 'code'
-    return "```" + text + "```" + ' '
+    return "\n```" + text + "```" + ' '
 
 
 def task_to_md(text):
-    global bypass
     global md_code
     global previous_act
     md_code += "- [ ] " + text + ' '
@@ -355,12 +352,11 @@ def task_to_md(text):
 
 
 def taskcheck_to_md(text):
-    global bypass
     global md_code
     global previous_act
     md_code += "- [x] " + text + ' '
-    previous_act = 'taskcheck'
-    return "- [x] " + text + ' '
+    previous_act = 'task'
+    return "- [x]" + text + ' '
 
 
 def num_to_md(num, text):
@@ -395,8 +391,12 @@ def ask_for_path():
 
 def show_in_terminal(pa):
     with open(path) as f:
-        for line in f:
-            result = parser.parse(line)
+        try:
+            for line in f:
+                result = parser.parse(line)
+        except Exception as ex:
+            print('Error in syntax', str(ex))
+            return
 
     print('\n============================')
     print('MD CODE TRANSLATION PREVIEW:')
@@ -406,8 +406,12 @@ def show_in_terminal(pa):
 
 def save_and_show(pa):
     with open(path) as f:
-        for line in f:
-            result = parser.parse(line)
+        try:
+            for line in f:
+                result = parser.parse(line)
+        except Exception as ex:
+            print('Error in syntax', str(ex))
+            return
 
     newfile = open("converted.md", "w")
     newfile.write(md_code)
@@ -421,8 +425,12 @@ def save_and_show(pa):
 
 def just_save(pa):
     with open(path) as f:
-        for line in f:
-            result = parser.parse(line)
+        try:
+            for line in f:
+                result = parser.parse(line)
+        except Exception as ex:
+            print('Error in syntax', str(ex))
+            return
 
     newfile = open("converted.md", "w")
     newfile.write(md_code)
